@@ -6,6 +6,8 @@ import com.su.auction.dao.UserDao;
 import com.su.auction.dao.auction.domain.Item;
 import com.su.auction.dao.auction.domain.Lot;
 import com.su.auction.dao.auction.domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -14,10 +16,14 @@ import java.util.stream.Collectors;
 /**
  * Created by bogdan on 17.09.16.
  */
+@Service
 public class AuctionServiceImpl implements AuctionService {
 
+    @Autowired
     private LotDao lotDao;
+    @Autowired
     private UserDao userDao;
+    @Autowired
     private ItemDao itemDao;
 
     public void setLotDao(LotDao lotDao) {
