@@ -20,6 +20,18 @@ public class AuctionServiceImpl implements AuctionService {
     private UserDao userDao;
     private ItemDao itemDao;
 
+    public void setLotDao(LotDao lotDao) {
+        this.lotDao = lotDao;
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
+    public void setItemDao(ItemDao itemDao) {
+        this.itemDao = itemDao;
+    }
+
     @Override
     public Lot createLot(Item item, User user, BigDecimal startPrice) {
         return null;

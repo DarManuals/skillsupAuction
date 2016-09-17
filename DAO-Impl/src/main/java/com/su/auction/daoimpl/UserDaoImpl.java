@@ -1,4 +1,4 @@
-package com.su.auction.dao.auction.daoimpl;
+package com.su.auction.daoimpl;
 
 import com.su.auction.dao.UserDao;
 import com.su.auction.dao.auction.domain.User;
@@ -12,6 +12,12 @@ import java.util.List;
 public class UserDaoImpl implements UserDao {
 
     private List<User> users = new ArrayList<>();
+
+    public void genarateUser(){
+        users.add(new User("jonny", "John", "Smith"));
+        users.add(new User("tommy", "Tom", "Tompson"));
+        users.add(new User("aron", "Aron", "White"));
+    }
 
     @Override
     public List<User> getAll() {

@@ -1,4 +1,4 @@
-package com.su.auction.dao.auction.daoimpl;
+package com.su.auction.daoimpl;
 
 import com.su.auction.dao.LotDao;
 import com.su.auction.dao.auction.domain.Lot;

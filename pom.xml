@@ -13,6 +13,7 @@
         <module>DAO-API</module>
         <module>DAO-Impl</module>
         <module>Auction-Service</module>
+        <module>auction-main</module>
     </modules>
 
     <properties>
