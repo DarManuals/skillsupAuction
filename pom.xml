@@ -10,6 +10,9 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>Domain</module>
+        <module>DAO-API</module>
+        <module>DAO-Impl</module>
+        <module>Auction-Service</module>
     </modules>
 
     <properties>
