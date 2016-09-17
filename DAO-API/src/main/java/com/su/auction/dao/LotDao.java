@@ -1,6 +1,6 @@
-package com.su;
+package com.su.auction.dao;
 
-import com.su.domain.Lot;
+import com.su.auction.dao.auction.domain.Lot;
 
 /**
  * Created by bogdan on 17.09.16.

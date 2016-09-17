@@ -1,4 +1,4 @@
-package com.su.domain;
+package com.su.auction.dao.auction.domain;
 
 /**
  * Created by bogdan on 17.09.16.

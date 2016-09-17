@@ -1,4 +1,4 @@
-package com.su;
+package com.su.auction.dao;
 
 import java.util.List;
 

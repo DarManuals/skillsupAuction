@@ -1,7 +1,7 @@
-package com.su.auction.daoimpl;
+package com.su.auction.dao.auction.daoimpl;
 
-import com.su.ItemDao;
-import com.su.domain.Item;
+import com.su.auction.dao.ItemDao;
+import com.su.auction.dao.auction.domain.Item;
 
 import java.util.ArrayList;
 import java.util.List;

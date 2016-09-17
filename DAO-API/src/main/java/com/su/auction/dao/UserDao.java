@@ -1,6 +1,6 @@
-package com.su;
+package com.su.auction.dao;
 
-import com.su.domain.User;
+import com.su.auction.dao.auction.domain.User;
 
 /**
  * Created by bogdan on 17.09.16.
