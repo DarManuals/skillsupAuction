@@ -16,13 +16,6 @@ public class UserDaoImpl implements UserDao {
 
     private List<User> users = new ArrayList<>();
 
-    @PostConstruct
-    public void genarateUser(){
-        users.add(new User("jonny", "John", "Smith"));
-        users.add(new User("tommy", "Tom", "Tompson"));
-        users.add(new User("aron", "Aron", "White"));
-    }
-
     @Override
     public List<User> getAll() {
         return users;
