@@ -12,8 +12,11 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static sun.plugin.javascript.navig.JSType.History;
 
 /**
  * Created by bogdan on 17.09.16.
@@ -52,12 +55,14 @@ public class AuctionServiceImpl implements AuctionService {
     public void placeBid(Lot lot, User user) {
         lot.setCurrentPrice(lot.getCurrentPrice().add(BigDecimal.ONE) );
         lot.setBuyer(user);
+        lot.addBidsHistory(user, lot.getCurrentPrice() );
     }
 
     @Override
     public void placeBid(Lot lot, BigDecimal newPrice, User user) {
         lot.setCurrentPrice(newPrice);
         lot.setBuyer(user);
+        lot.addBidsHistory(user, newPrice);
     }
 
     @Override

@@ -2,6 +2,8 @@ package com.su.auction.dao.auction.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by bogdan on 17.09.16.
@@ -14,6 +16,7 @@ public class Lot {
     private Date endDate;
     private User buyer;
     private BigDecimal currentPrice;
+    private List<History> bidsHistory = new LinkedList<>();
 
     public Lot() {
     }
@@ -110,5 +113,36 @@ public class Lot {
         result = 31 * result + (buyer != null ? buyer.hashCode() : 0);
         result = 31 * result + (currentPrice != null ? currentPrice.hashCode() : 0);
         return result;
+    }
+
+    private class History {
+        private User user;
+        private BigDecimal price;
+
+        public History(User user, BigDecimal price) {
+            this.user = user;
+            this.price = price;
+        }
+
+        @Override
+        public String toString() {
+            return "History{" +
+                    "user=" + user.getLogin() +
+                    ", price=" + price +
+                    '}';
+        }
+    }
+
+    public void addBidsHistory(User user, BigDecimal price) {
+        this.bidsHistory.add(new History(user, price) );
+    }
+
+    public void showHistory(){
+
+        System.out.println("--- Lot history: " + item.getTitle() + " ---" );
+
+        for(int i = 0; i < bidsHistory.size(); i++){
+            System.out.println(i + " - " + bidsHistory.get(i) );
+        }
     }
 }

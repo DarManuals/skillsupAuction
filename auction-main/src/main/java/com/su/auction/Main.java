@@ -40,11 +40,13 @@ public class Main {
         Lot lot = auctionService.createLot(one, jonny, BigDecimal.ONE);
         auctionService.placeBid(lot, tommy);
         auctionService.placeBid(lot, BigDecimal.TEN, arny);
+        auctionService.placeBid(lot, tommy);
 
         Lot closed = auctionService.closeLot(lot);
-        System.out.println("Lot " + lot.getItem().getTitle() + " is closed. Best price is $" +
-        lot.getCurrentPrice() + " by " + lot.getBuyer().getFirstName() + ". Lot closed on " +
-                new SimpleDateFormat("dd.MM.yyyy 'at' HH:mm:ss").format(lot.getEndDate()) );
+        System.out.println("Lot \'" + closed.getItem().getTitle() + "\' is closed. Best price is $" +
+        lot.getCurrentPrice() + " by " + closed.getBuyer().getFirstName() + ". Lot closed on " +
+                new SimpleDateFormat("dd.MM.yyyy 'at' HH:mm:ss").format(closed.getEndDate()) );
 
+        lot.showHistory();
     }
 }
