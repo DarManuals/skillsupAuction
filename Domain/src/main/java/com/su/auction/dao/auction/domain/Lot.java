@@ -16,7 +16,7 @@ public class Lot {
     private Date endDate;
     private User buyer;
     private BigDecimal currentPrice;
-    private List<History> bidsHistory = new LinkedList<>();
+    private List<String> bidsHistory = new LinkedList<>();
 
     public Lot() {
     }
@@ -115,34 +115,12 @@ public class Lot {
         return result;
     }
 
-    private class History {
-        private User user;
-        private BigDecimal price;
-
-        public History(User user, BigDecimal price) {
-            this.user = user;
-            this.price = price;
-        }
-
-        @Override
-        public String toString() {
-            return "History{" +
-                    "user=" + user.getLogin() +
-                    ", price=" + price +
-                    '}';
-        }
-    }
-
     public void addBidsHistory(User user, BigDecimal price) {
-        this.bidsHistory.add(new History(user, price) );
+        bidsHistory.add(bidsHistory.size() + ". History for [" + getItem().getTitle() + "]: " +
+                user.getLogin() + " set price $" + price.toString() );
     }
 
-    public void showHistory(){
-
-        System.out.println("--- Lot history: " + item.getTitle() + " ---" );
-
-        for(int i = 0; i < bidsHistory.size(); i++){
-            System.out.println(i + " - " + bidsHistory.get(i) );
-        }
+    public List<String> getBidsHistory() {
+        return bidsHistory;
     }
 }

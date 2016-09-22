@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.stream.IntStream;
 
 /**
  * Created by bogdan on 17.09.16.
@@ -47,6 +48,6 @@ public class Main {
         lot.getCurrentPrice() + " by " + closed.getBuyer().getFirstName() + ". Lot closed on " +
                 new SimpleDateFormat("dd.MM.yyyy 'at' HH:mm:ss").format(closed.getEndDate()) );
 
-        lot.showHistory();
+        lot.getBidsHistory().stream().forEach(h -> System.out.println(h));
     }
 }

@@ -67,4 +67,9 @@ public class AuctionServiceImpl implements AuctionService {
         lot.setEndDate(new Date());
         return lot;
     }
+
+    @Override
+    public List<String> getLotBidsHistory(Lot lot) {
+        return lot.getBidsHistory();
+    }
 }
