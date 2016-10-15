@@ -11,6 +11,7 @@ import com.su.auction.service.impls.ItemServiceImpl;
 import com.su.auction.service.impls.UserServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -19,8 +20,9 @@ import java.text.SimpleDateFormat;
  * Created by bogdan on 17.09.16.
  */
 @Configuration
+@ImportResource("classpath*:spring-config.xml")
 @ComponentScan(basePackages = "com.su")
-@ImportResource("classpath:jpa-context.xml")
+@EnableJpaRepositories("com.su.auction.service")
 public class Main {
 
     public static void main(String[] args) {

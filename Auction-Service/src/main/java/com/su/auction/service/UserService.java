@@ -1,6 +1,10 @@
 package com.su.auction.service;
 
+import com.su.auction.dao.auction.domain.Item;
+import com.su.auction.dao.auction.domain.Lot;
 import com.su.auction.dao.auction.domain.User;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

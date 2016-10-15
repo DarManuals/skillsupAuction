@@ -1,8 +1,5 @@
 package com.su.auction.service.impls;
 
-import com.su.auction.dao.ItemDao;
-import com.su.auction.dao.LotDao;
-import com.su.auction.dao.UserDao;
 import com.su.auction.dao.auction.domain.Item;
 import com.su.auction.dao.auction.domain.Lot;
 import com.su.auction.dao.auction.domain.User;
@@ -14,6 +11,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
  * Created by bogdan on 17.09.16.
@@ -22,31 +20,31 @@ import java.util.stream.Collectors;
 public class AuctionServiceImpl implements AuctionService {
 
     @Autowired
-    private LotDao lotDao;
+    private LotRepository lotRepository;
     @Autowired
-    private UserDao userDao;
+    private UserRepository userDao;
     @Autowired
-    private ItemDao itemDao;
+    private ItemRepository itemDao;
 
     @Override
     public Lot createLot(Item item, User user, BigDecimal startPrice) {
         Lot lot = new Lot(null, item, user, startPrice, new Date(), null, null, startPrice);
-
-        lotDao.add(lot);
-        return lot;
+        return lotRepository.save(lot);
     }
 
     @Override
     public List<Lot> getActiveLots() {
-        return lotDao.getAll()
-                .stream()
+
+        return StreamSupport.stream(lotRepository.findAll().spliterator(), false)
                 .filter(lot -> lot.getEndDate() == null)
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<User> getUsers() {
-        return userDao.getAll();
+        return StreamSupport
+                .stream(userDao.findAll().spliterator(), false)
+                .collect(Collectors.toList());
     }
 
     @Override
