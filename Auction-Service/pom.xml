@@ -18,7 +18,7 @@
         </dependency>
         <dependency>
             <groupId>com.su</groupId>
-            <artifactId>dao-impl</artifactId>
+            <artifactId>auction-hiber</artifactId>
             <version>${project.version}</version>
             <scope>runtime</scope>
         </dependency>

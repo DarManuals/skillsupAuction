@@ -10,9 +10,7 @@ import com.su.auction.service.impls.AuctionServiceImpl;
 import com.su.auction.service.impls.ItemServiceImpl;
 import com.su.auction.service.impls.UserServiceImpl;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -22,6 +20,7 @@ import java.text.SimpleDateFormat;
  */
 @Configuration
 @ComponentScan(basePackages = "com.su")
+@ImportResource("classpath:jpa-context.xml")
 public class Main {
 
     public static void main(String[] args) {
@@ -31,7 +30,7 @@ public class Main {
         ItemService itemService = ctx.getBean(ItemServiceImpl.class);
 
         User jonny = userService.createUser("jonny", "John", "Smith");
-        User tommy = userService.createUser("tommy", "Tom", "Tompson");
+        User tommy = userService.createUser("tommy", "Tom", "Thompson");
         User arny = userService.createUser("arny", "Arnold", "Shwarz");
 
         Item one = itemService.createItem("kettle", "Goot staff for boiling some water");
@@ -43,10 +42,11 @@ public class Main {
         auctionService.placeBid(lot, tommy);
 
         Lot closed = auctionService.closeLot(lot);
+        System.out.println();
         System.out.println("Lot \'" + closed.getItem().getTitle() + "\' is closed. Best price is $" +
         lot.getCurrentPrice() + " by " + closed.getBuyer().getFirstName() + ". Lot closed on " +
                 new SimpleDateFormat("dd.MM.yyyy 'at' HH:mm:ss").format(closed.getEndDate()) );
 
-        lot.getBidsHistory().stream().forEach(h -> System.out.println(h));
+        //lot.getBidsHistory().stream().forEach(System.out::println);
     }
 }

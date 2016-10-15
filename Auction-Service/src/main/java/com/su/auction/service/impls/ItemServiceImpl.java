@@ -25,7 +25,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item createItem(String title, String description) {
-        Item item = new Item(title, description);
+        Item item = new Item(null, title, description);
         itemDao.add(item);
         return item;
     }

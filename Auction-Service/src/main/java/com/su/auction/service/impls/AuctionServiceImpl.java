@@ -30,7 +30,8 @@ public class AuctionServiceImpl implements AuctionService {
 
     @Override
     public Lot createLot(Item item, User user, BigDecimal startPrice) {
-        Lot lot = new Lot(item, user, startPrice, new Date(), null, startPrice);
+        Lot lot = new Lot(null, item, user, startPrice, new Date(), null, null, startPrice);
+
         lotDao.add(lot);
         return lot;
     }
@@ -52,14 +53,14 @@ public class AuctionServiceImpl implements AuctionService {
     public void placeBid(Lot lot, User user) {
         lot.setCurrentPrice(lot.getCurrentPrice().add(BigDecimal.ONE) );
         lot.setBuyer(user);
-        lot.addBidsHistory(user, lot.getCurrentPrice() );
+        /*lot.addBidsHistory(user, lot.getCurrentPrice() );*/
     }
 
     @Override
     public void placeBid(Lot lot, BigDecimal newPrice, User user) {
         lot.setCurrentPrice(newPrice);
         lot.setBuyer(user);
-        lot.addBidsHistory(user, newPrice);
+        //lot.addBidsHistory(user, newPrice);
     }
 
     @Override
@@ -68,8 +69,8 @@ public class AuctionServiceImpl implements AuctionService {
         return lot;
     }
 
-    @Override
+    /*@Override
     public List<String> getLotBidsHistory(Lot lot) {
         return lot.getBidsHistory();
-    }
+    }*/
 }

@@ -18,5 +18,5 @@ public interface AuctionService {
     void placeBid(Lot lot, User buyer);
     void placeBid(Lot lot, BigDecimal newPrice, User buyer);
     Lot closeLot(Lot lot);
-    List<String> getLotBidsHistory(Lot lot);
+    //List<String> getLotBidsHistory(Lot lot);
 }
